@@ -1,0 +1,20 @@
+version: '2.1'
+
+networks:
+  qa-network:
+    name: qanetwork
+    driver: bridge
+
+services:
+  app:
+    container_name: qa-qa-service-local
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+      - "${HOME}/.m2:/home/mmanez/.m2"
+    command: sleep infinity
+    networks:
+      - qa-network
+    user: mmanez

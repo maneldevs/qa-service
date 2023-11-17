@@ -1,0 +1,19 @@
+{
+	"name": "qa-qa",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"customizations": {
+		"vscode": {
+			"settings": {"java.jdt.ls.java.home": "/opt/java/openjdk"},
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"vmware.vscode-boot-dev-pack",
+				"vscjava.vscode-lombok",
+				"humao.rest-client",
+				"mhutchie.git-graph"
+			]
+		}
+	},
+	"remoteUser": "mmanez"
+}
