@@ -5,4 +5,15 @@
 GET {{urlBase}}/questions?username=maneldevs
 
 ###
-GET {{urlBase}}/questions/281a6c13-56b5-4c12-84ce-f12bfa3e1bc3
+GET {{urlBase}}/questions/a48fa31a-3d5b-48be-a2ce-2480a10697f7
+
+###
+POST {{urlBase}}/questions
+content-type: application/json
+
+{
+    "username": "maneldevs",
+    "title": "question title",
+    "content": "question content",
+    "tags": ["test"]
+}

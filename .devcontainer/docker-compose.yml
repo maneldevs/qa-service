@@ -1,5 +1,8 @@
 version: '2.1'
 
+volumes:
+  qa-qa-mongo-local-data:
+
 networks:
   qa-network:
     name: qanetwork
@@ -14,7 +17,32 @@ services:
     volumes:
       - ../..:/workspaces:cached
       - "${HOME}/.m2:/home/mmanez/.m2"
+    ports:
+      - "8081:8081"
     command: sleep infinity
     networks:
       - qa-network
     user: mmanez
+    mem_limit: 1024m
+    environment:
+      - SPRING_PROFILES_ACTIVE=dockerlocal
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    container_name: qa-qa-mongo-local
+    image: mongo:7.0.3
+    mem_limit: 512m
+    ports:
+      - "27020:27017"
+    environment:
+      - TZ=UTC
+    healthcheck:
+      test: "mongostat -n 1"
+      interval: 5s
+      timeout: 2s
+      retries: 60
+    networks:
+      - qa-network
+    volumes:
+      - qa-qa-mongo-local-data:/data/db

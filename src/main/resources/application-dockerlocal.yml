@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+        host: qa-qa-mongo-local
+        port: 27017
+        database: qa-qa-db
